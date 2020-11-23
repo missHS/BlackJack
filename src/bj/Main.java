@@ -17,8 +17,8 @@ public class Main {
 		controller.drawDealerHand();
 		controller.drawDealerHand();
 		
-		System.out.println("This is the dealer hand = " + controller.showDealerHand());
-		System.out.println("This is your hand = " + controller.showPlayerHand());
+		System.out.println("This is the dealer hand: " + controller.showDealerHand());
+		System.out.println("This is your hand: " + controller.showPlayerHand());
 		
 		
 		while(controller.sumOfCardsPlayerHand()<21 && controller.sumOfCardsDealerHand()<21)	{	
@@ -28,8 +28,8 @@ public class Main {
 		if (selection.equals("Y")) {
 			controller.drawPlayerHand();
 			controller.drawDealerHand();
-			System.out.println("This is the dealer hand = " + controller.showDealerHand());
-			System.out.println("This is your hand = " + controller.showPlayerHand());	
+			System.out.println("This is the dealer hand: " + controller.showDealerHand());
+			System.out.println("This is your hand: " + controller.showPlayerHand());	
 					}
 		}
 		

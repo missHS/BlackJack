@@ -1,12 +1,12 @@
 package bj;
 
-import java.util.ArrayList;
+
 import java.util.Random;
 
 public class Controller {
 
-	private ArrayList<Integer> playerHand = new ArrayList<Integer>();
-	private ArrayList<Integer> dealerHand = new ArrayList<Integer>();
+	Player player = new Player();
+	Dealer dealer = new Dealer();
 
 	public int drawNewCard() {
 
@@ -23,52 +23,33 @@ public class Controller {
 
 	public void drawPlayerHand() {
 		int card = drawNewCard();
-		playerHand.add(card);
-
+		player.addPlayerCard(card);
 	}
-	
+
 	public void drawDealerHand() {
 		int card = drawNewCard();
-		dealerHand.add(card);		
+		dealer.addDealerCard(card);
 	}
 
 	public String showPlayerHand() {
-		String hand = null;
-		for (int temp : playerHand) {
-			hand = hand + " " + Integer.toString(temp);
-		}
-
-		hand = hand.replace("null ", "");
-		return hand;
+		String playerHand = player.getPlayerHand();
+		String sumPlayerHand = Integer.toString(player.sumOfCardsPlayerHand());
+		return playerHand+" = "+sumPlayerHand;
 	}
-	
-	public String showDealerHand() {
-		String hand = null;
-		for (int temp : dealerHand) {
-			hand = hand + " " + Integer.toString(temp);
-		}
 
-		hand = hand.replace("null ", "");
-		return hand;
+	public String showDealerHand() {
+		String dealerHand = dealer.getDealerHand();
+		String sumDealerHand = Integer.toString(dealer.sumOfCardsDealerHand());
+		return dealerHand+" = " + sumDealerHand;
 	}
 
 	public int sumOfCardsPlayerHand() {
-		int sum = 0;
-
-		for (int temp : playerHand) {
-			sum = sum + temp;
-		}
-
+		int sum = player.sumOfCardsPlayerHand();
 		return sum;
 	}
-	
+
 	public int sumOfCardsDealerHand() {
-		int sum = 0;
-
-		for (int temp : dealerHand) {
-			sum = sum + temp;
-		}
-
+		int sum = dealer.sumOfCardsDealerHand();
 		return sum;
 	}
 
