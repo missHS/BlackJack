@@ -1,8 +1,11 @@
 package bj;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Controller {
+
+	private ArrayList<Integer> cardHand = new ArrayList<Integer>();
 
 	public int drawNewCard() {
 
@@ -16,7 +19,31 @@ public class Controller {
 
 		return card;
 	}
-	
-	
+
+	public void drawPlayerHand() {
+		int card = drawNewCard();
+		cardHand.add(card);
+
+	}
+
+	public String showPlayerHand() {
+		String hand = null;
+		for (int temp : cardHand) {
+			hand = hand + " " + Integer.toString(temp);
+		}
+
+		hand = hand.replace("null ", "");
+		return hand;
+	}
+
+	public int sumOfCardsPlayerHand() {
+		int sum = 0;
+
+		for (int temp : cardHand) {
+			sum = sum + temp;
+		}
+
+		return sum;
+	}
 
 }
