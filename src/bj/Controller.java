@@ -9,12 +9,11 @@ public class Controller {
 
 	public Card drawNewCard() {
 		Random rand = new Random();
-		boolean test = false;	
-		
+		boolean cardValidation = false;	
 
 		String[] types = { "Hearts", "Clubs", "Spades", "Dimonds" };
 
-		while (test == false) {
+		while (cardValidation == false) {
 			Card randomCard = new Card();
 			int randomType = rand.nextInt(3);
 			String type = types[randomType];
@@ -38,14 +37,13 @@ public class Controller {
 			randomCard.setName(name);
 			randomCard.setValue(cardNumber);
 
-			test = card.addCardToDeck(randomCard);
+			cardValidation = card.addCardToDeck(randomCard);
 
-			if (test == true) {
+			if (cardValidation == true) {
 				return randomCard;			}
 		}
-
 		return null;
-	}
+		}
 
 	public void drawPlayerHand() {		
 		

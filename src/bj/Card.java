@@ -9,18 +9,7 @@ public class Card {
 
 	private String name;
 	private int value;
-
 	private Map<String, Card> deckOfCards = new HashMap<String, Card>();
-
-	public Card(String name, int value) {
-		this.value = value;
-		this.name = name;
-
-	}
-
-	public Card() {
-	}
-	
 	
 
 	public boolean addCardToDeck(Card card) {
@@ -33,7 +22,6 @@ public class Card {
 			});*/
 			return true;
 		}
-
 	}
 
 	public String getName() {

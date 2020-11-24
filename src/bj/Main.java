@@ -37,20 +37,20 @@ public class Main {
 		}
 
 		if (controller.sumOfCardsPlayerHand() > 21) {
-			System.out.println("you loose");
+			System.out.println("You loose..");
 
 		} else if (controller.sumOfCardsDealerHand() > 21 && controller.sumOfCardsPlayerHand() < 21) {
-			System.out.println("you win!");
+			System.out.println("You win!");
 		}
 
 		else if (controller.sumOfCardsPlayerHand() == 21) {
-			System.out.println("Black Jack");
+			System.out.println("Black Jack!");
 		}
 
 		else if (controller.sumOfCardsPlayerHand() < controller.sumOfCardsDealerHand()) {
-			System.out.println("you loose!");
+			System.out.println("You loose..");
 		} else if (controller.sumOfCardsDealerHand() < controller.sumOfCardsPlayerHand()) {
-			System.out.println("you win!");
+			System.out.println("You win!");
 		}
 
 		else {
