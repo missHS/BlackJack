@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class Dealer {
 	
 	
-	private ArrayList<Integer> dealerHand = new ArrayList<Integer>();
+	private ArrayList<Card> dealerHand = new ArrayList<Card>();
 	
-	public void addDealerCard(int card) {
+	public void addDealerCard(Card card) {
 		dealerHand.add(card);
 	}
 	
 	public String getDealerHand() {
 		String hand = null;
-		for (int temp : dealerHand) {
-			hand = hand + " " + Integer.toString(temp);
+		for (Card temp : dealerHand) {
+			hand = hand + " " + temp.getName();
 		}
 		hand = hand.replace("null ", "");
 		return hand;
@@ -23,8 +23,8 @@ public class Dealer {
 	public int sumOfCardsDealerHand() {
 		int sum = 0;
 
-		for (int temp : dealerHand) {
-			sum = sum + temp;
+		for (Card temp : dealerHand) {
+			sum = sum + temp.getValue();
 		}
 
 		return sum;

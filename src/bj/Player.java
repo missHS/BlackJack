@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class Player {
 	
-	private ArrayList<Integer> playerHand = new ArrayList<Integer>();
+	private ArrayList<Card> playerHand = new ArrayList<Card>();
 
 
-	public void addPlayerCard(int card) {
+	public void addPlayerCard(Card card) {
 		playerHand.add(card);
 	}
 	
 	public String getPlayerHand() {
 		String hand = null;
-		for (int temp : playerHand) {
-			hand = hand + " " + Integer.toString(temp);
+		for (Card temp : playerHand) {
+			hand = hand + " " + temp.getName() + ", ";
 		}
 
 		hand = hand.replace("null ", "");
@@ -24,8 +24,8 @@ public class Player {
 	public int sumOfCardsPlayerHand() {
 		int sum = 0;
 
-		for (int temp : playerHand) {
-			sum = sum + temp;
+		for (Card temp : playerHand) {
+			sum = sum + temp.getValue();
 		}
 
 		return sum;
