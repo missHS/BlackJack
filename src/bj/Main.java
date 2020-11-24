@@ -7,9 +7,8 @@ public class Main {
 	public static void main(String[] args) {
 
 		Controller controller = new Controller();
-	
-Scanner input = new Scanner(System.in);
 
+		Scanner input = new Scanner(System.in);
 		controller.drawPlayerHand();
 		controller.drawPlayerHand();
 		controller.drawDealerHand();
@@ -31,7 +30,7 @@ Scanner input = new Scanner(System.in);
 				controller.drawDealerHand();
 				System.out.println("This is the dealer hand: " + controller.showDealerHand());
 				System.out.println("This is your hand: " + controller.showPlayerHand());
-				
+
 			} else {
 				System.out.println("Would you like a new card? Y/N");
 			}
@@ -58,6 +57,6 @@ Scanner input = new Scanner(System.in);
 			System.out.println("Vad hände nu helene?");
 		}
 
-	} 
+	}
 
 }

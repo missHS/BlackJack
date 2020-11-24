@@ -14,7 +14,7 @@ public class Dealer {
 	public String getDealerHand() {
 		String hand = null;
 		for (Card temp : dealerHand) {
-			hand = hand + " " + temp.getName();
+			hand = hand + " " + temp.getName()+ ", ";
 		}
 		hand = hand.replace("null ", "");
 		return hand;
