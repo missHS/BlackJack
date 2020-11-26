@@ -21,9 +21,11 @@ public class Player {
 
 	public int sumOfCardsPlayerHand() {
 		int sum = 0;
-		for (Card temp : playerHand) {
-			sum = sum + temp.getValue();
-		}
-		return sum;
+		
+			for (Card temp : playerHand) {
+				sum = sum + temp.getValue();
+			}
+			return sum;
+	
 	}
 }

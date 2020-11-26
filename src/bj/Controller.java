@@ -21,24 +21,32 @@ public class Controller {
 			int randomType = rand.nextInt(3);
 			String type = types[randomType];
 			int cardNumber = rand.nextInt(12) + 1;
+			int secondCardNumber = cardNumber;
 			String name = null;
 
 			if (cardNumber == 11) {
 				name = "Jack of " + type;
 				cardNumber = 10;
+				secondCardNumber = cardNumber;
 			} else if (cardNumber == 12) {
 				name = "Queen of " + type;
 				cardNumber = 10;
+				secondCardNumber = cardNumber;
 			} else if (cardNumber == 13) {
 				name = "King of " + type;
 				cardNumber = 10;
+				secondCardNumber = cardNumber;
 			} else if (cardNumber == 1) {
 				name = "Ace of " + type;
+				secondCardNumber = 11;
 			} else {
 				name = Integer.toString(cardNumber) + " of " + type;
 			}
+			
 			randomCard.setName(name);
 			randomCard.setValue(cardNumber);
+			randomCard.setSecondValue(secondCardNumber);
+			randomCard.setType(type);
 
 			cardValidation = card.addCardToDeck(randomCard);
 
@@ -70,7 +78,7 @@ public class Controller {
 		String sumDealerHand = Integer.toString(dealer.sumOfCardsDealerHand());
 		return dealerHand + " = " + sumDealerHand;
 	}
-	
+
 //Sumarises the values of the cards in hand
 	public int sumOfCardsPlayerHand() {
 		int sum = player.sumOfCardsPlayerHand();
@@ -81,27 +89,30 @@ public class Controller {
 		int sum = dealer.sumOfCardsDealerHand();
 		return sum;
 	}
-	
+
 //Method to determinate if the dealer will draw a new card or not. True = no, False = yes
 	public boolean dealerAI(int score) {
-		//If score is very high, no card is drawn
-		if (score >= 19) {
+		if (score >= 17) {
 			return true;
-		} 
-		//If score is medium the choice is randomized
-		else if (score >= SCOREFORAI) {
-			int a = 1;
-			int b = 2;
-			int randomOfTwoInts = new Random().nextBoolean() ? a : b;
-
-			if (randomOfTwoInts == 1) {
-				return false;
-
-			} else if (randomOfTwoInts == 2) {
-				return true;
-			}
 		}
 		return false;
+	}
+	
+	public String typeSymbol(String type) {
+		if(type.equals("Spades")){
+			return "\u2660";
+		}
+		else if(type.equals("Dimonds")){
+			return "\u2666";
+		}
+		else if(type.equals("Hearts")){
+			return "\u2665";
+		}
+		else if(type.equals("Clubs")){
+			return "\u2663";
+		}
+		return null;		
+		
 	}
 
 }

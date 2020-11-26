@@ -21,11 +21,13 @@ public class Dealer {
 
 	public int sumOfCardsDealerHand() {
 		int sum = 0;
-
-		for (Card temp : dealerHand) {
-			sum = sum + temp.getValue();
-		}
-		return sum;
+		
+			for (Card temp : dealerHand) {
+				sum = sum + temp.getValue();
+			}
+			return sum;
+		
+	
 	}
 
 }

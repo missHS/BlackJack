@@ -21,6 +21,8 @@ public class Main {
 		// As long as no one has 21 or more, the game continues
 		while (controller.sumOfCardsPlayerHand() < 21 && controller.sumOfCardsDealerHand() < 21) {
 			System.out.println("Would you like a new card? Y/N");
+			System.out.println("\b2660");
+			System.out.println("\u0004");
 			String selection = input.nextLine().toUpperCase();
 
 			if (selection.equals("Y")) {
