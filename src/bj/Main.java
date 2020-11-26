@@ -5,8 +5,14 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-
-		Controller controller = new Controller();
+		
+		BJFrame frame = new BJFrame();
+	CardRegister cardRegister = new CardRegister();
+		frame.setVisible(true);
+		Controller controller = new Controller(frame,cardRegister);
+		
+		
+/*
 		Scanner input = new Scanner(System.in);
 
 		// Starts game by drawing cards and displaying them
@@ -71,7 +77,7 @@ public class Main {
 			System.out.println("You win!");
 		}
 
-		input.close();
+		input.close();*/
 	}
 
 }
