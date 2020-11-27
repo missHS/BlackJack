@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		BJFrame frame = new BJFrame();
-	CardRegister cardRegister = new CardRegister();
+		CardRegister cardRegister = new CardRegister();
 		frame.setVisible(true);
 		Controller controller = new Controller(frame,cardRegister);
 		

@@ -16,8 +16,17 @@ public class CardRegister {
 			return false;
 		} else {
 			deckOfCards.put(card.getId(), card);
+			iterate();
 			return true;
 		}
+	}
+	
+	public String iterate() {
+		String key=null;
+		for (Map.Entry<String, Card> entry : deckOfCards.entrySet()) {
+		    key = key + entry.getKey();
+		   		}
+		return key;
 	}
 
 	public void addDealerCard(Card card) {

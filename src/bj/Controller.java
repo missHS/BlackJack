@@ -104,11 +104,11 @@ public class Controller {
 
 		if (cardRegister.checkForAceDealer() == false) {
 			dealerScore = cardRegister.sumOfCardsDealerHand();
-			frame.getScoreBoardTextD().setText("Dealer score: " + dealerScore);
+			frame.getScoreBoardTextD().setText("Dealer score: " + dealerScore+cardRegister.iterate() );
 		} else if (cardRegister.checkForAceDealer() == true) {
-			if (cardRegister.sumOfCardsDealerHand() > 21) {
+			if (cardRegister.sumOfCardsDealerHand() >= 21) {
 				dealerScore = cardRegister.sumOfCardsDealerHand() - 10;
-				frame.getScoreBoardTextD().setText("Dealer score: " + dealerScore);
+				frame.getScoreBoardTextD().setText("Dealer score: " + dealerScore +cardRegister.iterate() );
 
 			} else {
 				dealerScore = cardRegister.sumOfCardsDealerHand();
@@ -122,12 +122,12 @@ public class Controller {
 	public void scoreTrackerPlayer() {
 		if (cardRegister.checkForAcePlayer() == false) {
 			playerScore = cardRegister.sumOfCardsPlayerHand();
-			frame.getScoreBoardTextP().setText("Your score: " + playerScore);
+			frame.getScoreBoardTextP().setText("Your score: " + playerScore+cardRegister.iterate() );
 
 		} else if (cardRegister.checkForAcePlayer() == true) {
 			if (cardRegister.sumOfCardsPlayerHand() >= 21) {
 				playerScore = cardRegister.sumOfCardsPlayerHand() - 10;
-				frame.getScoreBoardTextP().setText("Your score: " + playerScore);
+				frame.getScoreBoardTextP().setText("Your score: " + playerScore+cardRegister.iterate() );
 
 			} else {
 				playerScore = cardRegister.sumOfCardsPlayerHand();
@@ -137,16 +137,16 @@ public class Controller {
 		}
 	}
 
-	public void playerTurn() {
-		frame.getP1Type1().setText(cardRegister.getPlayerHand(counter).getType());
-		frame.getP1Value1().setText(cardRegister.getPlayerHand(counter).getName());
+	public void playerTurn() {		
 		if (counter == 0) {
+			frame.getP1Type1().setText(cardRegister.getPlayerHand(counter).getType());
+			frame.getP1Value1().setText(cardRegister.getPlayerHand(counter).getName());
 			frame.getdType1().setText(cardRegister.getDealerHand(counter).getType());
 			frame.getdValue1().setText(cardRegister.getDealerHand(counter).getName());
-			counter++;
+			counter++; //c1
 			frame.getP1Type2().setText(cardRegister.getPlayerHand(counter).getType());
 			frame.getP1Value2().setText(cardRegister.getPlayerHand(counter).getName());
-			counter++;
+			counter++; //c2
 			frame.getP1Card1().setVisible(true);
 			frame.getP1Card2().setVisible(true);
 			frame.getdCard1().setVisible(true);
@@ -157,7 +157,7 @@ public class Controller {
 			frame.getP1Type3().setText(cardRegister.getPlayerHand(counter).getType());
 			frame.getP1Value3().setText(cardRegister.getPlayerHand(counter).getName());
 			frame.getP1Card3().setVisible(true);
-			counter++;
+			counter++;//c3
 
 		} else if (counter == 3) {
 			frame.getP1Type4().setText(cardRegister.getPlayerHand(counter).getType());
