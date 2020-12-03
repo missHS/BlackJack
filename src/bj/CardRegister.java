@@ -82,5 +82,14 @@ public class CardRegister {
 		}
 		return sum;
 	}
+	
+	
+	public void resetCards() {		
+			playerHand.clear();
+			dealerHand.clear();
+			deckOfCards.clear();		
+		}
+		
+	}
 
-}
+

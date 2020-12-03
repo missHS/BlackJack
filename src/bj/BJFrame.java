@@ -57,7 +57,7 @@ public class BJFrame extends JFrame {
 	
 	private JButton btnStop = new JButton("STOP");
 	private JButton btnHit = new JButton("HIT");
-	private JButton btnStartNewGame = new JButton("Start new game");
+	private JButton btnStartNewGame = new JButton("New Game");
 	private final JTextPane txtpnDealer = new JTextPane();
 	private final JTextPane txtpnPlayer = new JTextPane();
 
@@ -279,7 +279,7 @@ public class BJFrame extends JFrame {
 		messageText.setBounds(10, 11, 298, 35);
 		
 		messageDialog.add(messageText);
-		btnStartNewGame.setBounds(26, 339, 109, 23);
+		btnStartNewGame.setBounds(26, 339, 142, 26);
 		
 		contentPane.add(btnStartNewGame);
 		txtpnDealer.setBackground(new Color(0, 100, 0));
