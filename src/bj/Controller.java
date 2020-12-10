@@ -44,18 +44,14 @@ public class Controller {
 			if (cardNumber == 11) {
 				name = "J";
 				cardNumber = 10;
-
 				id = name + type;
-
 			} else if (cardNumber == 12) {
 				name = "Q";
 				cardNumber = 10;
-
 				id = name + type;
 			} else if (cardNumber == 13) {
 				name = "K";
 				cardNumber = 10;
-
 				id = name + type;
 			} else if (cardNumber == 1) {
 				name = "A";
@@ -92,13 +88,22 @@ public class Controller {
 		cardRegister.getPlayerHand(counter);
 	}
 
-//Method to determinate if the dealer will draw a new card or not. True = no, False = yes
+//Method to determinate if the dealer will draw a new card or not. 
 	public int dealerAI(int score) {
 		int sum = score;
 		if (score > 21 && cardRegister.checkForAceDealer() == true) {
 			sum = cardRegister.sumOfCardsDealerHand() - 10;
 		}
 		return sum;
+	}
+
+	public void displayDealerHiddenCard() {
+		frame.getdCard2().setBackground(new Color(255, 255, 255));
+		frame.getdType2().setText(cardRegister.getDealerHand(counter).getType());
+		frame.getdValue2().setText(cardRegister.getDealerHand(counter).getName());
+		frame.getdType2().setVisible(true);
+		frame.getdValue2().setVisible(true);
+		scoreTrackerDealer();
 	}
 
 	public void resetGame() {
@@ -170,20 +175,28 @@ public class Controller {
 	public void checkWinner() {
 		if (cardRegister.sumOfCardsPlayerHand() > 21) {
 			frame.getMessageText().setText("You loose..");
-
-		} else if (cardRegister.sumOfCardsDealerHand() > 21 && cardRegister.sumOfCardsPlayerHand() <=21) {
+			deactivateButtons();
+			if (counter >= 1) {
+				counter = 1;
+				displayDealerHiddenCard();
+			}
+		} else if (cardRegister.sumOfCardsDealerHand() > 21 && cardRegister.sumOfCardsPlayerHand() <= 21) {
 			frame.getMessageText().setText("You win!!");
+			frame.getBtnHit().setEnabled(false);
+			frame.getBtnStop().setEnabled(false);
+		} else if (cardRegister.sumOfCardsDealerHand() <= 21 && cardRegister.sumOfCardsPlayerHand() <= 21) {
+			if (cardRegister.sumOfCardsPlayerHand() > cardRegister.sumOfCardsDealerHand()) {
+				frame.getMessageText().setText("You win!!");
+				deactivateButtons();
+			} else if (cardRegister.sumOfCardsPlayerHand() < cardRegister.sumOfCardsDealerHand()) {
+				frame.getMessageText().setText("You loose..");
+				deactivateButtons();
+			} else if (cardRegister.sumOfCardsDealerHand() == cardRegister.sumOfCardsPlayerHand()) {
+				frame.getMessageText().setText("It's a draw");
+				deactivateButtons();
 
-		} else if (cardRegister.sumOfCardsDealerHand() > 21 && cardRegister.sumOfCardsPlayerHand() <=21) {
-			frame.getMessageText().setText("You win!!");
-
-		}else if ((cardRegister.sumOfCardsPlayerHand() > cardRegister.sumOfCardsDealerHand()&&  cardRegister.sumOfCardsPlayerHand()<=21)) {
-			frame.getMessageText().setText("You win!!");
-
-		} else if (cardRegister.sumOfCardsDealerHand() == cardRegister.sumOfCardsPlayerHand()) {
-			frame.getMessageText().setText("It's a draw");
-		}
-		else {
+			}
+		} else {
 			frame.getMessageText().setText("Vad hände nu Helene?");
 		}
 
@@ -247,19 +260,20 @@ public class Controller {
 			frame.getP1Value5().setText(cardRegister.getPlayerHand(counter).getName());
 			frame.getP1Card5().setVisible(true);
 			counter++;
-			checkWinner();
+			if(cardRegister.sumOfCardsPlayerHand() > 21) {
+				checkWinner();
+			}
 
 		}
 		scoreTrackerPlayer();
+		if(counter>4) {
+			dealerTurn();
+		}
 	}
 
 	public void dealerTurn() {
 		counter = 1;
-		frame.getdCard2().setBackground(new Color(255, 255, 255));
-		frame.getdType2().setText(cardRegister.getDealerHand(counter).getType());
-		frame.getdValue2().setText(cardRegister.getDealerHand(counter).getName());
-		frame.getdType2().setVisible(true);
-		frame.getdValue2().setVisible(true);
+		displayDealerHiddenCard();
 		counter++;
 		scoreTrackerDealer();
 		checkWinner();
@@ -293,6 +307,11 @@ public class Controller {
 		scoreTrackerDealer();
 	}
 
+	public void deactivateButtons() {
+		frame.getBtnHit().setEnabled(false);
+		frame.getBtnStop().setEnabled(false);
+	}
+
 	public void eventHandlers() {
 
 		frame.getBtnStartNewGame().addActionListener(new ActionListener() {
@@ -300,6 +319,9 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				resetGame();
 				counter = 0;
+				frame.getBtnHit().setEnabled(true);
+				frame.getBtnStop().setEnabled(true);
+
 				drawPlayerCard();
 				drawPlayerCard();
 				drawDealerCard();
